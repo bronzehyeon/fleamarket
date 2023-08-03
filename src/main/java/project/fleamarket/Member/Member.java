@@ -1,29 +1,31 @@
-package project.fleamarket;
+package project.fleamarket.Member;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import project.fleamarket.Post.Post;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class User {
+@Entity
+@Getter @Setter
+public class Member {
 
 
     @Id @GeneratedValue
-    @Column(name = "user_id")
+    @Column(name = "member_id")
     private long id;
 
-    private String userName;//아이디?
+    private String userId;//아이디?
 
-    private String Name;
+    private String name;
 
     private String password;
 
     private String nickname;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "member")
     private List<Post> posts = new ArrayList<>();
 
-
 }
+

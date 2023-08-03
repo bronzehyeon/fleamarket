@@ -1,11 +1,11 @@
-package project.fleamarket;
+package project.fleamarket.Member;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class UserController {
+public class MemberController {
 
     @GetMapping(value = "/user/login")
     public String login(Model model) {

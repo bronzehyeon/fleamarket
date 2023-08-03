@@ -1,11 +1,14 @@
-package project.fleamarket;
+package project.fleamarket.Post.Comment;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import project.fleamarket.Member.Member;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
+@Entity
+@Getter @Setter
 public class Sub_comment {
 
     @Id
@@ -14,8 +17,8 @@ public class Sub_comment {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User writer;
+    @JoinColumn(name = "member_id")
+    private Member writer;
 
     private String text;
 
@@ -24,7 +27,5 @@ public class Sub_comment {
     @ManyToOne
     @JoinColumn(name = "comment_id")
     private Comment comment;
-
-
 
 }

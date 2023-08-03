@@ -1,4 +1,4 @@
-package project.fleamarket;
+package project.fleamarket.Post;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
