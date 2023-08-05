@@ -9,14 +9,14 @@ import java.util.Date;
 
 @Entity
 @Getter @Setter
-public class Sub_comment {
+public class SubComment {
 
     @Id
     @GeneratedValue
     @Column(name = "sub_comment_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member writer;
 
@@ -24,7 +24,7 @@ public class Sub_comment {
 
     private Date date;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_id")
     private Comment comment;
 

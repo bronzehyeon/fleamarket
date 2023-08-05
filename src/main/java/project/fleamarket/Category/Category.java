@@ -1,4 +1,4 @@
-package project.fleamarket;
+package project.fleamarket.Category;
 
 import jakarta.persistence.*;
 import lombok.Getter;

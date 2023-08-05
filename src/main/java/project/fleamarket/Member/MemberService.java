@@ -20,7 +20,6 @@ public class MemberService {
 
     //회원가입
     @Transactional
-
     public Long join(Member member) {
 //        validateDuplicateUser(user);
         memberRepository.save(member);

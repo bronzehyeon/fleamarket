@@ -18,7 +18,7 @@ public class Comment {
     @Column(name = "comment_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member writer;
 
@@ -26,11 +26,11 @@ public class Comment {
 
     private Date date;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;
 
     @OneToMany(mappedBy = "comment")
-    private List<Sub_comment> sub_comments = new ArrayList<>();
+    private List<SubComment> sub_comments = new ArrayList<>();
 
 }

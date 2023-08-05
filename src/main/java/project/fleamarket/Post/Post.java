@@ -3,9 +3,10 @@ package project.fleamarket.Post;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import project.fleamarket.Category;
+import project.fleamarket.Category.Category;
 import project.fleamarket.Post.Comment.Comment;
 import project.fleamarket.Member.Member;
+import project.fleamarket.TradeType;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +23,7 @@ public class Post {
 
     private String item;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -30,11 +31,12 @@ public class Post {
 
     private Date date;
 
-//    private TradeType tradeType;
+    @Enumerated
+    private TradeType tradeType;
 
-    private String Text;
+    private String text;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
