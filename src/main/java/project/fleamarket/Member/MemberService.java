@@ -21,18 +21,27 @@ public class MemberService {
     //회원가입
     @Transactional
     public Long join(Member member) {
-//        validateDuplicateUser(user);
+        validateDuplicateUserId(member);
+        validateDuplicateNickname(member);
         memberRepository.save(member);
         return member.getId();
     }
 
-    private void validateDuplicateUser(Member member) {
+    private void validateDuplicateUserId(Member member) {
         //Exception
-        List<Member> findName = memberRepository.findByName(member.getName());
-        if (!findName.isEmpty()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        List<Member> findUserId = memberRepository.findByName(member.getUserId());
+        if (!findUserId.isEmpty()) {
+            throw new IllegalStateException("이미 존재하는 아이디입니다.");
         }
     }
+    private void validateDuplicateNickname(Member member) {
+        //Exception
+        List<Member> findNickname = memberRepository.findByNickname(member.getNickname());
+        if (!findNickname.isEmpty()) {
+            throw new IllegalStateException("이미 존재하는 닉네임입니다.");
+        }
+    }
+
 
     //회원전체 조회
     public List<Member> findUsers() {

@@ -9,8 +9,14 @@ import project.fleamarket.Post.Post;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
-@Getter @Setter
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = "userId"),
+        @UniqueConstraint(columnNames = "nickname")
+})
+@Getter
+@Setter
 public class Member {
     public Member() {
 
@@ -24,12 +30,13 @@ public class Member {
         this.joinDate = LocalDate.now();
     }
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "member_id")
     private long id;
 
     @NonNull
-    private String userId;//아이디?
+    private String userId;
 
     @NonNull
     private String name;

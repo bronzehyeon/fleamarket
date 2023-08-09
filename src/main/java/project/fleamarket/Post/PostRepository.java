@@ -23,6 +23,11 @@ public class PostRepository {
         return em.find(Post.class, id);
     }
 
+    public List<Post> findAll() {
+        return em.createQuery("select p from Post p", Post.class)
+                .getResultList();
+    }
+
     public List<Post> findByCategory(String categoryName) {//카테고리에 해당하는 게시글들 반환
         return em.createQuery("select p from Post p where p.category = :categoryName", Post.class)
                 .setParameter("categoryName", categoryName)
@@ -41,11 +46,11 @@ public class PostRepository {
                 .getResultList();
     }
 
-    public List<Post> findByWordInText(String word) {//본문에 단어가 포함되어 있는지 검색
-        return em.createQuery("select p from Post p where p.title like :keyword", Post.class)
-                .setParameter("keyword", "%" + word + "%")
-                .getResultList();
-    }
+//    public List<Post> findByWordInText(String word) {//본문에 단어가 포함되어 있는지 검색
+//        return em.createQuery("select p from Post p where p.title like :keyword", Post.class)
+//                .setParameter("keyword", "%" + word + "%")
+//                .getResultList();
+//    }
     public List<Post> findByWordInTextOrTitle(String word) {//제목 또는 본문에 단어가 포함되어 있는지 검색
         return em.createQuery("select p from Post p where p.title like :keyword or p.text like :keyword", Post.class)
                 .setParameter("keyword", "%" + word + "%")

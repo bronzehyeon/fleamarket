@@ -34,6 +34,12 @@ public class MemberRepository {//@Repository
                 .getResultList();
     }
 
+    public List<Member> findByNickname(String nickname) {
+        return em.createQuery("select m from Member where m.nickname = :nickname", Member.class)
+                .setParameter("nickname", nickname)
+                .getResultList();
+    }
+
 
 
 }
