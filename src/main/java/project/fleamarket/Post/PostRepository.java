@@ -24,8 +24,8 @@ public class PostRepository {
     }
 
     public List<Post> findByCategory(String categoryName) {//카테고리에 해당하는 게시글들 반환
-        return em.createQuery("select p from Post p where p.category.categoryName = :name", Post.class)
-                .setParameter("name", categoryName)
+        return em.createQuery("select p from Post p where p.category = :categoryName", Post.class)
+                .setParameter("categoryName", categoryName)
                 .getResultList();
     }
 

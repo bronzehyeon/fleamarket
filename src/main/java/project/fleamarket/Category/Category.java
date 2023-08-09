@@ -1,24 +1,5 @@
 package project.fleamarket.Category;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import project.fleamarket.Post.Post;
-
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-@Getter @Setter
-public class Category {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "category_id")
-    private Long id;
-
-    private String categoryName;
-
-    @OneToMany(mappedBy = "category")
-    private List<Post> posts = new ArrayList<>();
+public enum Category {
+    전자기기, 가전제품, 화장품, 생활용품,기타
 }
